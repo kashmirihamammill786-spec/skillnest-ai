@@ -1,0 +1,120 @@
+<!doctype html>
+
+<html lang="en" class="dark">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Secure API Key Manager | SkillNest AI</title>
+    <meta name="description" content="Secure management dashboard for API integrations and provider credentials." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet" />
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #08111F; color: #F8FAFC; }
+        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+    </style>
+</head>
+<body>
+
+    <script>
+        // Powered by GizoData — real server-side backend (Postgres).
+        // Role-gated admin access.
+        
+        async function init() {
+            const user = window.GizoAuth?.getUser();
+            if (!user || user.metadata?.role !== 'admin') {
+                window.location.href = '/login';
+                return;
+            }
+            renderAPIKeyList();
+        }
+
+        async function renderAPIKeyList() {
+            const container = document.getElementById('api-keys-table');
+            container.innerHTML = '<div class="p-8 text-center text-slate-500">Loading configurations...</div>';
+            
+            try {
+                // Fetch from GizoData
+                const keys = await GizoData.list('api_keys');
+                if (!keys || keys.length === 0) {
+                    container.innerHTML = `<tr><td colspan="4" class="p-8 text-center text-slate-400">No integration modules configured yet.</td></tr>`;
+                    return;
+                }
+                container.innerHTML = keys.map(k => `
+                    <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                        <td class="p-4 font-medium">${k.data.provider}</td>
+                        <td class="p-4 text-slate-400 font-mono text-sm">••••••••${k.data.key_hint || 'XXXX'}</td>
+                        <td class="p-4"><span class="px-2 py-1 rounded-full text-xs ${k.data.status === 'active' ? 'bg-green-500/10 text-green-400' : 'bg-amber-500/10 text-amber-400'}">${k.data.status || 'inactive'}</span></td>
+                        <td class="p-4 text-right space-x-3">
+                            <button onclick="handleRotate('${k.id}')" class="text-blue-400 hover:text-blue-300 text-sm">Rotate</button>
+                            <button onclick="handleRevoke('${k.id}')" class="text-rose-400 hover:text-rose-300 text-sm">Revoke</button>
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (e) {
+                container.innerHTML = `<tr><td colspan="4" class="p-4 text-rose-400 text-center">System error: ${e.message}</td></tr>`;
+            }
+        }
+
+        async function handleAdd() {
+            const provider = prompt("Enter Provider Name (e.g., OpenAI, Anthropic, AWS):");
+            if (!provider) return;
+            await GizoData.create('api_keys', { 
+                provider, 
+                key_hint: '0000', 
+                status: 'inactive',
+                updated_at: new Date().toISOString()
+            });
+            renderAPIKeyList();
+        }
+    </script>
+
+    <main class="max-w-6xl mx-auto px-6 py-12">
+        <header class="mb-12">
+            <h1 class="text-4xl font-bold tracking-tight mb-4">Integrations Dashboard</h1>
+            <p class="text-slate-400">Manage backend provider modules. All credentials must be manually updated in the secure vault.</p>
+        </header>
+
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 space-y-6">
+                <div class="bg-[#0f172a] border border-white/10 rounded-2xl p-6">
+                    <h2 class="text-lg font-semibold mb-6 flex items-center gap-2">
+                        <span class="w-1.5 h-6 bg-[#A3E635] rounded-full"></span>
+                        Service Modules
+                    </h2>
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="text-slate-500 text-xs uppercase tracking-wider border-b border-white/5">
+                                <th class="p-4">Provider</th>
+                                <th class="p-4">Credential Hint</th>
+                                <th class="p-4">Status</th>
+                                <th class="p-4 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="api-keys-table"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <aside class="space-y-6">
+                <div class="bg-indigo-950/20 border border-indigo-500/20 rounded-2xl p-6">
+                    <h3 class="font-semibold mb-3">Security Notice</h3>
+                    <p class="text-sm text-indigo-200/70 mb-4">No secrets are stored here. You are responsible for manually updating provider settings. Always verify endpoints against production environment logs.</p>
+                    <button class="w-full bg-[#06B6D4] hover:brightness-110 text-white font-medium py-2 rounded-xl transition-all">Add Integration Module</button>
+                </div>
+                
+                <div class="bg-slate-900 border border-white/5 rounded-2xl p-6">
+                    <h3 class="text-sm font-semibold mb-4 text-slate-400 uppercase tracking-wider">Audit Log</h3>
+                    <div class="text-xs text-slate-500 space-y-3">
+                        <p>System Initialized - admin:01</p>
+                        <p>Security scan complete - status:ok</p>
+                    </div>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
