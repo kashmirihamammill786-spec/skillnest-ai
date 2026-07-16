@@ -1,0 +1,105 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gizo One | Home</title>
+  <meta name="description" content="Professional AI Infrastructure &amp; Performance Monitoring." />
+  <meta property="og:title" content="Gizo One" />
+  <meta property="og:description" content="Production-ready AI infrastructure and performance insights." />
+  <meta property="og:type" content="website" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#06B6D4',
+            accent: '#A3E635',
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+    .glass { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+  </style>
+</head>
+<body class="bg-[#08111F] text-[#F8FAFC] min-h-screen selection:bg-accent selection:text-black">
+  
+  <nav class="border-b border-white/10 p-6 sticky top-0 z-50 bg-[#08111F]/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="/" class="text-2xl font-bold text-primary tracking-tighter">Gizo One</a>
+      <div class="flex gap-6 text-sm font-medium text-slate-300">
+        <a href="/" class="hover:text-accent transition-colors">Home</a>
+        <a href="/dashboard" class="hover:text-accent transition-colors">Dashboard</a>
+        <a href="/login" class="hover:text-accent transition-colors border border-white/10 px-4 py-2 rounded-xl hover:border-accent transition-all">Sign In</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto p-12" role="main">
+    <section class="text-center mb-24">
+      <h1 class="text-6xl font-bold tracking-tight mb-6 bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">Enterprise AI Infrastructure.</h1>
+      <p class="text-slate-400 text-xl max-w-2xl mx-auto mb-10">Real-time performance monitoring, secure API management, and scalable infrastructure for your AI applications.</p>
+      <div class="flex justify-center gap-4">
+        <a href="/signup" class="px-8 py-3 bg-accent text-black hover:bg-lime-400 rounded-xl font-bold transition-all shadow-lg shadow-accent/20">Get Started</a>
+        <a href="/dashboard" class="px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-medium transition-all">View Status</a>
+      </div>
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <div class="glass p-8 rounded-2xl hover:border-accent/50 transition-all duration-300 hover:-translate-y-1">
+        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        </div>
+        <h2 class="text-xl font-semibold mb-2">Live Telemetry</h2>
+        <p class="text-sm text-slate-400">Monitor latency, throughput, and error rates across all your active AI providers.</p>
+      </div>
+
+      <div class="glass p-8 rounded-2xl hover:border-primary/50 transition-all duration-300 hover:-translate-y-1">
+        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+        </div>
+        <h2 class="text-xl font-semibold mb-2">Secure Key Vault</h2>
+        <p class="text-sm text-slate-400">Centrally manage provider credentials with encrypted storage and audit history.</p>
+      </div>
+
+      <div class="glass p-8 rounded-2xl hover:border-accent/50 transition-all duration-300 hover:-translate-y-1">
+        <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+        </div>
+        <h2 class="text-xl font-semibold mb-2">Role Control</h2>
+        <p class="text-sm text-slate-400">Manage team access and API permissions with granular administrative controls.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 mt-20 pt-16 pb-8 px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+      <div>
+        <h3 class="text-white font-bold text-lg mb-4">Privacy &amp; Legal</h3>
+        <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
+          At Gizo One, your data security is our priority. This policy outlines how we handle, store, and protect your enterprise information.
+          For official inquiries, support, or data deletion requests, please contact our legal team at: <strong>[INSERT CONTACT NUMBER]</strong>.
+        </p>
+      </div>
+      <div class="glass p-6 rounded-2xl">
+        <h3 class="text-white font-bold text-sm uppercase tracking-widest mb-4">Compliance Terms</h3>
+        <ul class="space-y-3 text-slate-400 text-sm">
+          <li class="flex items-center gap-2"><span>✓</span> Data Encryption at Rest</li>
+          <li class="flex items-center gap-2"><span>✓</span> GDPR &amp; CCPA Compliance</li>
+          <li class="flex items-center gap-2"><span>✓</span> No Third-Party Data Sharing</li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center text-slate-500 text-xs border-t border-white/5 pt-8">
+      © 2024 Gizo One Inc. All rights reserved. Registered Enterprise Entity.
+    </div>
+  </footer>
+</body>
+</html>
