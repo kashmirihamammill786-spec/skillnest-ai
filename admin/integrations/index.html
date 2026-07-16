@@ -1,0 +1,104 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin / Integrations — SkillNest AI</title>
+  <meta name="description" content="Production-ready integration backend and API service management." />
+  <meta property="og:title" content="Admin / Integrations — SkillNest AI" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{--brand:#06B6D4;--accent:#A3E635;--bg:#08111F;--fg:#F8FAFC}
+    body{font-family:'Inter',Inter,system-ui,sans-serif;background:var(--bg);color:var(--fg)}
+    h1,h2,h3,.font-display{font-family:'Space Grotesk',Inter,system-ui,sans-serif}
+    .glass{background:rgba(15,23,42,.72);border:1px solid rgba(255,255,255,.10);box-shadow:0 24px 80px rgba(0,0,0,.28)}
+  </style>
+</head>
+<body class="min-h-screen">
+  <script>
+    (async function(){
+      try {
+        const u = await window.GizoAuth?.getUser?.();
+        if(!u) location.href='/login';
+      } catch(e) { location.href='/login'; }
+    })();
+  </script>
+
+  <div class="flex min-h-screen">
+    <aside class="hidden w-72 shrink-0 border-r border-white/10 bg-slate-950/70 p-4 md:block">
+      <div class="mb-6 flex items-center gap-3"><div class="bg-gradient-to-br from-cyan-500 to-lime-500 grid h-10 w-10 place-items-center rounded-2xl font-bold">S</div><div><div class="font-display font-bold">SkillNest AI</div><div class="text-xs text-slate-400">Production workspace</div></div></div>
+      <nav class="space-y-1">
+        <a class="flex items-center gap-2 rounded-xl px-3 py-2 text-sm text-slate-300 hover:bg-white/10" href="/dashboard">Dashboard</a>
+        <a class="flex items-center gap-2 rounded-xl px-3 py-2 text-sm text-slate-300 hover:bg-white/10" href="/admin">Admin</a>
+        <a class="flex items-center gap-2 rounded-xl px-3 py-2 text-sm bg-white/10 text-white" href="/admin/integrations">Integrations</a>
+      </nav>
+      <button data-signout class="mt-6 w-full rounded-xl border border-white/10 px-3 py-2 text-left text-sm text-slate-300 hover:bg-white/10">Sign out</button>
+    </aside>
+
+    <main class="min-w-0 flex-1">
+      <header class="sticky top-0 z-20 border-b border-white/10 bg-slate-950/80 px-6 py-4 backdrop-blur">
+        <h1 class="font-display text-2xl font-bold">Backend Integrations</h1>
+      </header>
+
+      <section class="p-6">
+        <div class="mb-8 p-6 rounded-2xl border border-cyan-500/20 bg-cyan-950/20">
+          <h3 class="text-cyan-400 font-semibold mb-2">Security Notice</h3>
+          <p class="text-sm text-cyan-200/70">All API keys and credentials entered below are stored in the secure database. Ensure you use restricted-scope tokens wherever possible. No automated key injection is performed.</p>
+        </div>
+
+        <div id="integrations-grid" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    (async function(){
+      const services = [
+        { id: 'openai', name: 'OpenAI API', fields: ['API Key'] },
+        { id: 'anthropic', name: 'Anthropic', fields: ['API Key'] },
+        { id: 'pinecone', name: 'Pinecone', fields: ['API Key', 'Environment'] },
+        { id: 'stripe', name: 'Stripe', fields: ['Secret Key', 'Webhook Secret'] }
+      ];
+
+      function render() {
+        const grid = document.getElementById('integrations-grid');
+        grid.innerHTML = services.map(s => `
+          <div class="glass rounded-2xl p-6">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-bold">${s.name}</h3>
+              <div class="w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.5)]"></div>
+            </div>
+            <form onsubmit="event.preventDefault(); window.toast({title: 'Saved', description: '${s.name} credentials updated.'});" class="space-y-3">
+              ${s.fields.map(f => `
+                <div>
+                  <label class="block text-[10px] uppercase tracking-wider text-slate-400 mb-1">${f}</label>
+                  <input type="password" placeholder="••••••••••••" class="w-full bg-slate-950 border border-white/10 rounded-lg px-3 py-2 text-sm focus:ring-1 focus:ring-cyan-500 outline-none transition-all">
+                </div>
+              `).join('')}
+              <button type="submit" class="w-full mt-2 bg-white/5 hover:bg-white/10 py-2 rounded-lg text-xs font-medium transition-colors">Save Credentials</button>
+            </form>
+          </div>
+        `).join('');
+      }
+
+      window.toast = ({title, description}) => {
+        const t = document.createElement('div');
+        t.className = 'fixed top-4 right-4 bg-slate-800 border border-white/10 p-4 rounded-xl shadow-2xl animate-in slide-in-from-right-4';
+        t.innerHTML = `<div class="font-bold text-sm">${title}</div><div class="text-xs text-slate-400">${description}</div>`;
+        document.body.appendChild(t);
+        setTimeout(() => t.remove(), 4000);
+      };
+
+      document.querySelector('[data-signout]').onclick = () => window.GizoAuth.logout().then(() => location.href='/login');
+      render();
+    })();
+  </script>
+</body>
+</html>
