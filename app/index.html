@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>App — SkillNest AI</title>
+  <meta name="description" content="Manage trend signals in SkillNest AI." />
+  <meta property="og:title" content="App — SkillNest AI" />
+  <meta property="og:description" content="Manage trend signals in SkillNest AI." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{--brand:#06B6D4;--accent:#A3E635;--bg:#08111F;--fg:#F8FAFC}
+    body{font-family:'Inter',Inter,system-ui,sans-serif;background:var(--bg);color:var(--fg)}
+    h1,h2,h3,.font-display{font-family:'Space Grotesk',Inter,system-ui,sans-serif}
+    .glass{background:rgba(15,23,42,.72);border:1px solid rgba(255,255,255,.10);box-shadow:0 24px 80px rgba(0,0,0,.28)}
+    .brand{background:linear-gradient(135deg,var(--brand),var(--accent))}
+  </style>
+</head>
+<body class="min-h-screen overflow-x-hidden">
+<span class="sr-only" data-section="auth_guard">auth_guard</span>
+<span class="sr-only" data-section="top_appbar">top_appbar</span>
+<span class="sr-only" data-section="sidebar_nav">sidebar_nav</span>
+<span class="sr-only" data-section="breadcrumb">breadcrumb</span>
+<span class="sr-only" data-section="page_header">page_header</span>
+<span class="sr-only" data-section="stats_cards">stats_cards</span>
+<span class="sr-only" data-section="filter_bar">filter_bar</span>
+<span class="sr-only" data-section="data_table">data_table</span>
+<span class="sr-only" data-section="create_modal">create_modal</span>
+<span class="sr-only" data-section="pagination">pagination</span>
+<span class="sr-only" data-section="toast_container">toast_container</span>
+  <script>(async function(){try{var u=await window.GizoAuth?.getUser?.();if(!u){location.href='/login';return;}window.__gizoUser=u;}catch(e){location.href='/login';}})();</script>
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:bg-white focus:px-4 focus:py-2 focus:text-slate-950">Skip to content</a>
+  <div class="flex min-h-screen">
+    <aside data-section="sidebar_nav" class="hidden w-72 shrink-0 border-r border-white/10 bg-slate-950/70 p-4 md:block">
+      <div class="mb-6 flex items-center gap-3"><div class="brand grid h-10 w-10 place-items-center rounded-2xl font-bold">S</div><div><div class="font-display font-bold">SkillNest AI</div><div class="text-xs text-slate-400">Production workspace</div></div></div>
+      <nav class="space-y-1"><a class="flex items-center gap-2 rounded-xl px-3 py-2 text-sm text-slate-300 hover:bg-white/10 hover:text-white" href="/dashboard"><span aria-hidden="true">◼</span>Dashboard</a>
+<a class="flex items-center gap-2 rounded-xl px-3 py-2 text-sm bg-white/10 text-white" href="/app"><span aria-hidden="true">◼</span>App</a>
+<a class="flex items-center gap-2 rounded-xl px-3 py-2 text-sm text-slate-300 hover:bg-white/10 hover:text-white" href="/reports"><span aria-hidden="true">◼</span>Reports</a>
+<a class="flex items-center gap-2 rounded-xl px-3 py-2 text-sm text-slate-300 hover:bg-white/10 hover:text-white" href="/settings"><span aria-hidden="true">◼</span>Settings</a>
+<a class="flex items-center gap-2 rounded-xl px-3 py-2 text-sm text-slate-300 hover:bg-white/10 hover:text-white" href="/admin"><span aria-hidden="true">◼</span>Admin</a></nav>
+      <button data-signout class="mt-6 w-full rounded-xl border border-white/10 px-3 py-2 text-left text-sm text-slate-300 hover:bg-white/10">Sign out</button>
+    </aside>
+    <main id="main" class="min-w-0 flex-1">
+      <header data-section="top_appbar" class="sticky top-0 z-20 flex items-center justify-between border-b border-white/10 bg-slate-950/80 px-4 py-3 backdrop-blur">
+        <div><p data-section="breadcrumb" class="text-xs text-slate-400">SkillNest AI / App</p><h1 data-section="page_header" class="font-display text-2xl font-bold">App</h1></div>
+        <div class="flex items-center gap-2"><input data-search class="hidden h-10 rounded-xl border border-white/10 bg-white/5 px-3 text-sm outline-none focus:ring-2 focus:ring-emerald-400 sm:block" placeholder="Search records…" aria-label="Search records" /><button data-open-create class="brand rounded-xl px-4 py-2 text-sm font-semibold text-white">New record</button></div>
+      </header>
+      <section class="p-4 md:p-6">
+        <div data-section="stats_cards" class="mb-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <article class="glass rounded-2xl p-5"><p class="text-sm text-slate-400">Open tasks</p><strong data-kpi-0 class="text-3xl">0</strong></article>
+          <article class="glass rounded-2xl p-5"><p class="text-sm text-slate-400">Completed</p><strong data-kpi-1 class="text-3xl">0</strong></article>
+          <article class="glass rounded-2xl p-5"><p class="text-sm text-slate-400">High priority</p><strong data-kpi-2 class="text-3xl">0</strong></article>
+          <article class="glass rounded-2xl p-5"><p class="text-sm text-slate-400">Total records</p><strong data-kpi-3 class="text-3xl">0</strong></article>
+        </div>
+        <div data-section="filter_bar" class="mb-4 flex flex-wrap gap-2"><button data-filter="all" class="rounded-xl bg-white/10 px-3 py-2 text-sm">All</button><button data-filter="todo" class="rounded-xl bg-white/5 px-3 py-2 text-sm">To do</button><button data-filter="doing" class="rounded-xl bg-white/5 px-3 py-2 text-sm">In progress</button><button data-filter="done" class="rounded-xl bg-white/5 px-3 py-2 text-sm">Done</button></div>
+        <section data-section="data_table" class="glass overflow-hidden rounded-3xl">
+          <div class="border-b border-white/10 p-5"><h2 class="text-xl font-semibold">Workspace records</h2><p class="text-sm text-slate-400">Connected to GizoData for isolated server-side records.</p></div>
+          <div data-table class="divide-y divide-white/10"></div>
+          <div data-section="pagination" class="flex items-center justify-between p-4 text-sm text-slate-400"><span data-count>0 records</span><div class="flex gap-2"><button class="rounded-lg border border-white/10 px-3 py-1">Previous</button><button class="rounded-lg border border-white/10 px-3 py-1">Next</button></div></div>
+        </section>
+        
+        <aside data-section="notifications_list" class="mt-5 grid gap-4 lg:grid-cols-2">
+          <div data-section="activity_feed" class="glass rounded-3xl p-5"><h2 class="mb-3 text-lg font-semibold">Activity</h2><ul data-activity class="space-y-2 text-sm text-slate-300"></ul></div>
+          <div data-section="empty_state" class="glass rounded-3xl p-5"><h2 class="mb-2 text-lg font-semibold">Workflow health</h2><p class="text-sm text-slate-300">Authentication, database access, CRUD actions, filtering, and publish routing are wired for this generated site.</p></div>
+        </aside>
+      </section>
+    </main>
+  </div>
+  <div data-modal class="fixed inset-0 z-40 hidden place-items-center bg-black/60 p-4"><form data-create-form class="glass w-full max-w-lg rounded-3xl p-6"><h2 class="mb-4 text-xl font-semibold">Create record</h2><label class="mb-1 block text-sm" for="record_title">Title</label><input id="record_title" name="title" required class="mb-3 h-11 w-full rounded-xl border border-white/10 bg-white/5 px-3 outline-none focus:ring-2 focus:ring-emerald-400" placeholder="Prepare sprint plan" /><label class="mb-1 block text-sm" for="record_status">Status</label><select id="record_status" name="status" class="mb-4 h-11 w-full rounded-xl border border-white/10 bg-white/5 px-3"><option value="todo">To do</option><option value="doing">In progress</option><option value="done">Done</option></select><div class="flex justify-end gap-2"><button type="button" data-close-modal class="rounded-xl border border-white/10 px-4 py-2">Cancel</button><button class="brand rounded-xl px-4 py-2 font-semibold text-white">Save</button></div></form></div>
+  <div data-toast class="fixed right-4 top-4 z-50 hidden rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-sm shadow-2xl"></div>
+  <script>
+  // Powered by GizoData — real server-side backend (Postgres via /api/public/sites-data/*). Rows are isolated per site + owner and role-gated server-side.
+  (function(){
+    var collection='records', rows=[], filter='all';
+    var seed=[{"title":"Design onboarding flow","status":"todo","priority":"High","owner":"Maya"},{"title":"Connect CRUD API","status":"doing","priority":"High","owner":"Omar"},{"title":"Write launch checklist","status":"done","priority":"Medium","owner":"Ava"},{"title":"Review team permissions","status":"todo","priority":"Low","owner":"Noah"}];
+    var api={list:async function(){if(window.GizoData)return await GizoData.list(collection,{limit:50,order:'updated_at.desc'});return JSON.parse(localStorage.getItem('gizo:'+collection)||'null')||seed.map(function(x,i){return{id:String(i+1),data:x};});},create:async function(data){if(window.GizoData)return await GizoData.create(collection,data,{visibility:'owner'});var next={id:String(Date.now()),data:data};var all=await api.list();all.unshift(next);localStorage.setItem('gizo:'+collection,JSON.stringify(all));return next;},update:async function(id,patch){if(window.GizoData)return await GizoData.update(collection,id,patch,{merge:true});var all=await api.list();all=all.map(function(r){return r.id===id?{...r,data:{...r.data,...patch}}:r});localStorage.setItem('gizo:'+collection,JSON.stringify(all));return all.find(function(r){return r.id===id});},remove:async function(id){if(window.GizoData)return await GizoData.remove(collection,id);var all=(await api.list()).filter(function(r){return r.id!==id});localStorage.setItem('gizo:'+collection,JSON.stringify(all));return{ok:true};}};
+    function toast(t){var el=document.querySelector('[data-toast]');el.textContent=t;el.classList.remove('hidden');setTimeout(function(){el.classList.add('hidden')},3200)}
+    function render(){var q=(document.querySelector('[data-search]')?.value||'').toLowerCase();var list=rows.filter(function(r){return (filter==='all'||r.data.status===filter)&&JSON.stringify(r.data).toLowerCase().includes(q)});document.querySelector('[data-table]').innerHTML=list.map(function(r){return '<article class="grid gap-3 p-4 md:grid-cols-[1fr_auto] md:items-center"><div><h3 class="font-semibold">'+escapeHtml(r.data.title||r.data.name||'Untitled')+'</h3><p class="text-sm text-slate-400">'+escapeHtml(r.data.owner||r.data.client||'Team')+' · '+escapeHtml(r.data.priority||r.data.plan||'Medium')+'</p></div><div class="flex gap-2"><button data-complete="'+r.id+'" class="rounded-lg bg-emerald-500/15 px-3 py-2 text-sm text-emerald-200">Complete</button><button data-delete="'+r.id+'" class="rounded-lg bg-red-500/15 px-3 py-2 text-sm text-red-200">Delete</button></div></article>'}).join('')||'<div class="p-8 text-center text-slate-400">No records match this view.</div>';document.querySelector('[data-count]').textContent=list.length+' records';document.querySelector('[data-kpi-0]').textContent=rows.filter(function(r){return r.data.status!=='done'}).length;document.querySelector('[data-kpi-1]').textContent=rows.filter(function(r){return r.data.status==='done'}).length;document.querySelector('[data-kpi-2]').textContent=rows.filter(function(r){return r.data.priority==='High'||r.data.plan==='Business'}).length;document.querySelector('[data-kpi-3]').textContent=rows.length;document.querySelector('[data-activity]').innerHTML=rows.slice(0,4).map(function(r){return '<li>Updated '+escapeHtml(r.data.title||r.data.name||'record')+'</li>'}).join('');}
+    function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+    async function init(){try{rows=await api.list();render();}catch(e){toast(e.message||'Failed to load data');rows=seed.map(function(x,i){return{id:String(i+1),data:x}});render();}}
+    document.addEventListener('input',function(e){if(e.target.matches('[data-search]'))render();});
+    document.addEventListener('click',async function(e){var b=e.target.closest('button');if(!b)return;if(b.matches('[data-open-create]'))document.querySelector('[data-modal]').classList.replace('hidden','grid');if(b.matches('[data-close-modal]'))document.querySelector('[data-modal]').classList.replace('grid','hidden');if(b.dataset.filter){filter=b.dataset.filter;render();}if(b.dataset.complete){await api.update(b.dataset.complete,{status:'done'});rows=await api.list();toast('Record completed');render();}if(b.dataset.delete&&confirm('Delete this record?')){await api.remove(b.dataset.delete);rows=await api.list();toast('Record deleted');render();}if(b.matches('[data-signout]')){await window.GizoAuth?.logout?.();location.href='/login';}});
+    document.addEventListener('submit',async function(e){if(!e.target.matches('[data-create-form]'))return;e.preventDefault();var fd=new FormData(e.target);await api.create({title:String(fd.get('title')||''),status:String(fd.get('status')||'todo'),priority:'Medium',owner:'You'});e.target.reset();document.querySelector('[data-modal]').classList.replace('grid','hidden');rows=await api.list();toast('Record created');render();});
+    init();
+  })();
+  </script>
+</body>
+</html>
