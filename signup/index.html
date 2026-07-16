@@ -1,0 +1,78 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Signup | SkillNest AI</title>
+  <meta name="description" content="Create your SkillNest AI account." />
+  <meta property="og:title" content="Signup | SkillNest AI" />
+  <meta property="og:description" content="Join SkillNest AI and start optimizing your skills." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+  </style>
+</head>
+<body class="bg-[#08111F] text-[#F8FAFC] min-h-screen flex flex-col">
+
+  
+  <nav class="border-b border-white/10 p-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="/" class="text-xl font-bold text-[#06B6D4]">SkillNest AI</a>
+      <div class="flex items-center gap-6">
+        <a href="/" class="hover:text-[#A3E635] transition">Home</a>
+        <a href="/dashboard" class="hover:text-[#A3E635] transition">Dashboard</a>
+        <a href="/login" class="hover:text-[#A3E635] transition">Login</a>
+        <a href="/signup" class="bg-[#06B6D4] px-4 py-2 rounded-xl text-white font-medium">Signup</a>
+      </div>
+    </div>
+  </nav>
+
+  
+  <main class="flex-grow flex items-center justify-center p-6">
+    <div class="w-full max-w-md bg-white/5 border border-white/10 p-8 rounded-2xl shadow-xl">
+      <h1 class="text-2xl font-bold mb-6">Create Account</h1>
+      
+      <form data-gizo-auth="signup" data-gizo-redirect="/dashboard" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium mb-1">Full Name</label>
+          <input type="text" name="display_name" required class="w-full bg-white/5 border border-white/10 rounded-xl p-3 focus:ring-2 focus:ring-[#06B6D4] outline-none" placeholder="John Doe" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Email</label>
+          <input type="email" name="email" required class="w-full bg-white/5 border border-white/10 rounded-xl p-3 focus:ring-2 focus:ring-[#06B6D4] outline-none" placeholder="john@example.com" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Password</label>
+          <input type="password" name="password" required class="w-full bg-white/5 border border-white/10 rounded-xl p-3 focus:ring-2 focus:ring-[#06B6D4] outline-none" placeholder="••••••••" />
+        </div>
+        <div class="flex items-center gap-2">
+          <input type="checkbox" id="terms" required class="rounded border-white/10 bg-white/5" />
+          <label for="terms" class="text-xs text-slate-400">I agree to the terms and conditions</label>
+        </div>
+        <button type="submit" class="w-full bg-gradient-to-r from-[#06B6D4] to-[#A3E635] text-white py-3 rounded-xl font-semibold hover:opacity-90 transition">Sign up</button>
+        <p data-gizo-status role="status" class="text-sm text-center text-red-400"></p>
+      </form>
+
+      <p class="mt-6 text-center text-sm text-slate-400">
+        Already have an account? <a href="/login" class="text-[#06B6D4] font-medium">Login</a>
+      </p>
+    </div>
+  </main>
+
+  
+  <footer class="border-t border-white/10 p-6 text-center text-slate-500 text-sm">
+    © 2024 SkillNest AI. All rights reserved.
+  </footer>
+
+  <script>
+    // Navigation logic handled by browser via standard anchor tags
+    // GizoAuth manages form submission and redirects automatically via data-gizo-auth attributes
+  </script>
+</body>
+</html>
