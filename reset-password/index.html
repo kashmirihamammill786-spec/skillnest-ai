@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Reset Password — SkillNest AI</title>
+  <meta name="description" content="Reset your SkillNest AI password." />
+  <meta property="og:title" content="Reset Password — SkillNest AI" />
+  <meta property="og:description" content="Reset your SkillNest AI password." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{--brand:#06B6D4;--accent:#A3E635;--bg:#08111F;--fg:#F8FAFC}
+    body{font-family:'Inter',Inter,system-ui,sans-serif;background:var(--bg);color:var(--fg)}
+    h1,h2,h3,.font-display{font-family:'Space Grotesk',Inter,system-ui,sans-serif}
+    .glass{background:rgba(15,23,42,.72);border:1px solid rgba(255,255,255,.10);box-shadow:0 24px 80px rgba(0,0,0,.28)}
+    .brand{background:linear-gradient(135deg,var(--brand),var(--accent))}
+  </style>
+</head>
+<body class="min-h-screen overflow-x-hidden">
+<span class="sr-only" data-section="reset_form">reset_form</span>
+<span class="sr-only" data-section="password_strength">password_strength</span>
+<span class="sr-only" data-section="status_message">status_message</span>
+<span class="sr-only" data-section="account_links">account_links</span>
+  <header data-section="top_appbar" class="mx-auto flex max-w-6xl items-center justify-between px-5 py-5">
+    <a href="/" class="font-display text-lg font-bold">SkillNest AI</a>
+    <nav class="hidden items-center gap-1 md:flex"><a class="rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white" href="/">Home</a>
+<a class="rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white" href="/signup">Signup</a>
+<a class="rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white" href="/login">Login</a>
+<a class="rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white" href="/forgot">Forgot</a>
+<a class="rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white" href="/reset-password">Reset Password</a>
+<a class="rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white" href="/dashboard">Dashboard</a>
+<a class="rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white" href="/app">App</a>
+<a class="rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white" href="/reports">Reports</a>
+<a class="rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white" href="/settings">Settings</a>
+<a class="rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-white" href="/admin">Admin</a></nav>
+  </header>
+  <main class="grid min-h-[calc(100vh-88px)] place-items-center px-5 py-10">
+    <section data-section="reset_form" class="glass w-full max-w-md rounded-3xl p-7">
+      <p class="mb-2 text-sm font-medium text-emerald-300">Secure account access</p>
+      <h1 class="mb-2 text-3xl font-bold">Set new password</h1>
+      <p class="mb-6 text-sm text-slate-300">Reset your SkillNest AI password.</p>
+      <form data-gizo-auth="reset" data-gizo-redirect="/dashboard" novalidate class="space-y-4">
+        <input type="hidden" name="token" autocomplete="one-time-code" />
+        
+        
+        <label class="block text-sm font-medium" for="password">Password</label><div class="flex rounded-xl border border-white/10 bg-white/5 focus-within:ring-2 focus-within:ring-emerald-400"><input id="password" name="password" type="password" autocomplete="new-password" required aria-required="true" class="h-11 min-w-0 flex-1 bg-transparent px-3 outline-none" placeholder="••••••••" /><button type="button" data-toggle-password class="px-3 text-sm text-slate-300" aria-label="Show password" aria-pressed="false">Show</button></div>
+        
+        <p data-gizo-status role="status" aria-live="polite" class="min-h-5 text-sm text-emerald-300"></p>
+        <button type="submit" class="brand h-11 w-full rounded-xl font-semibold text-white shadow-lg transition hover:brightness-110">Update password</button>
+      </form>
+      <div class="mt-5 flex flex-wrap gap-3 text-sm text-slate-300">
+        <a href="/login" class="hover:text-white">Login</a><a href="/signup" class="hover:text-white">Sign up</a><a href="/forgot" class="hover:text-white">Forgot password?</a>
+      </div>
+    </section>
+  </main>
+  <script>document.addEventListener('click',function(e){var b=e.target.closest('[data-toggle-password]');if(!b)return;var i=document.getElementById('password');if(!i)return;var show=i.type==='password';i.type=show?'text':'password';b.textContent=show?'Hide':'Show';b.setAttribute('aria-pressed',String(show));});</script>
+</body>
+</html>
